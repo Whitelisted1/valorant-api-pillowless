@@ -1,13 +1,13 @@
-# valorant-api
-A Python wrapper for valorant-api.com
+# valorant-api-pillowless
+Sync/Async Python wrapper for valorant-api.com without the pillow dependency. Pillow has been removed in order to reduce the size of the requirements of this project. Primary purpose of this package is to be used in the [Valorant-Python-Wrapper](https://github.com/Whitelisted1/Valorant-Python-Wrapper) project. Please check out the original project [here](https://github.com/MinshuG/valorant-api).
 
-[![pypi](https://img.shields.io/pypi/v/valorant-api.svg)](https://pypi.python.org/pypi/valorant-api/)
-[![Downloads](https://static.pepy.tech/personalized-badge/valorant-api?period=total&units=international_system&left_color=green&right_color=blue&left_text=Downloads)](https://pepy.tech/project/valorant-api)
+[![pypi](https://img.shields.io/pypi/v/valorant-api-pillowless.svg)](https://pypi.python.org/pypi/valorant-api-pillowless/)
+[![Downloads](https://static.pepy.tech/personalized-badge/valorant-api-pillowless?period=total&units=international_system&left_color=green&right_color=blue&left_text=Downloads)](https://pepy.tech/project/valorant-api-pillowless)
 
 # Installation
-<!-- `pip install git+https://github.com/MinshuG/valorant-api` \
+<!-- `pip install git+https://github.com/MinshuG/valorant-api-pillowless` \
 or \ -->
-`pip install valorant-api`
+`pip install valorant-api-pillowless`
 
 # Usages
 ```py
@@ -26,24 +26,10 @@ agents = await api.get_agents()
 # searching
 agent = agents.find_where(displayname="Raze", developerName="Gumshoe")
 agent = agents.find_first(displayname="Raze")
-
-# agents image generation
-from valorant_api import generators
-
-font_file = r"valorant_api\fonts\Valorant Font.ttf"
-# initialize class
-generator = generators.AgentImageGenerator(font_file)
-# generator actual image
-image = await generator.generate(agent)
-# save the image
-image.save("image.png", "PNG")
 ```
-# Agents Image Example
-<img src="./example.png" alt="KAY/O" height="250"/>
 
 # Requirements
 
 * python-dateutil
 * aiohttp
 * requests
-* Pillow

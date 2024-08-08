@@ -1,7 +1,6 @@
 import time
 
 from valorant_api import SyncValorantApi, AsyncValorantApi
-from valorant_api import generators
 import asyncio
 
 from valorant_api.agents import Agent
@@ -123,24 +122,6 @@ async def Asynctest():
     levelborder = await api.search_level_borders_by_uuid(levelborders[0].uuid)
 
 
-async def generate(generator, agent: Agent):
-    image = await generator.generate(agent)
-    image.save(f"images/{agent.display_name.replace('/', '_')}_{agent.uuid}.png", "PNG") # KAY/O
-    # print(f"Done: {agent.display_name}")
-
-
-async def generator_test():
-    api = AsyncValorantApi(language=language)
-    agents = await api.get_agents()
-    generator = generators.AgentImageGenerator(r"valorant_api/fonts/Valorant Font.ttf")
-    tasks = []
-    # for agent in agents:
-    #     # tasks.append(asyncio.create_task(generate(generator, agent)))
-    #     await generate(generator, agent)
-    # image.show()
-    # await asyncio.gather(*tasks)
-
-
 if __name__ == "__main__":
     st = time.time()
     synctest()
@@ -149,7 +130,3 @@ if __name__ == "__main__":
     st = time.time()
     asyncio.run(Asynctest())
     print("[Async] Took", time.time() - st)
-
-    st = time.time()
-    asyncio.run(generator_test())
-    print("[Async: Generator] Took", time.time() - st)
